@@ -2,7 +2,7 @@ version: "3.9"
 services:
   app:
     build: ./app
-    command: uwsgi --socket :8001 --module app.wsgi
+    command: uwsgi --socket :8001 --module ####.wsgi
 
   nginx:
     image: nginx:1.21.0-alpine
@@ -11,5 +11,6 @@ services:
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d
       - ./nginx/uwsgi_params:/etc/nginx/uwsgi_params
+      - ./static:/static
     depends_on:
       - app
